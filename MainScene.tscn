@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckoevgt6aveid"]
+
+[ext_resource type="Script" uid="uid://bam366uhueexc" path="res://PlatformerMovement.gd" id="1_3mqji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqi1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxrcv"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3mqji"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(386, 100)
+script = ExtResource("1_3mqji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_rpqi1")
+debug_color = Color(0.462483, 0.445158, 1, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 30.0
+offset_bottom = 30.0
+scale = Vector2(0.499, 0.5)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(385, 227)
+scale = Vector2(12, 2.96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_uxrcv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(1.85966e-05, -8.10623e-06)
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_3mqji")
