@@ -1,15 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckoevgt6aveid"]
+[gd_scene load_steps=12 format=4 uid="uid://ckoevgt6aveid"]
 
 [ext_resource type="Script" uid="uid://bam366uhueexc" path="res://PlatformerMovement.gd" id="1_3mqji"]
+[ext_resource type="Texture2D" uid="uid://myrlc26ib6rp" path="res://Player.png" id="2_rf2cd"]
+[ext_resource type="Texture2D" uid="uid://bmh1au1unucaj" path="res://Platform.png" id="2_x4av3"]
+[ext_resource type="AudioStream" uid="uid://bfv0ok3wtj18s" path="res://Jumping_Resonance.mp3" id="3_a814b"]
+[ext_resource type="Texture2D" uid="uid://bpx221fw1w3iw" path="res://Platforms.png" id="3_rpqi1"]
+[ext_resource type="Texture2D" uid="uid://c1lbh6b2ea2m5" path="res://images/Bouncy.png" id="4_uxrcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqi1"]
+size = Vector2(24, 24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxrcv"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4av3"]
+texture = ExtResource("2_x4av3")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uxrcv"]
+texture = ExtResource("3_rpqi1")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rf2cd"]
+texture = ExtResource("4_uxrcv")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_rpqi1"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_x4av3")
+sources/1 = SubResource("TileSetAtlasSource_uxrcv")
+sources/2 = SubResource("TileSetAtlasSource_rf2cd")
 
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(386, 100)
+position = Vector2(40, -10)
 script = ExtResource("1_3mqji")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -18,166 +75,31 @@ debug_color = Color(0.462483, 0.445158, 1, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
-[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
+[node name="DashParticles" type="CPUParticles2D" parent="CharacterBody2D"]
+modulate = Color(0.921569, 0.505882, 0, 1)
+amount = 60
+emission_shape = 3
+emission_rect_extents = Vector2(9, 9)
+gravity = Vector2(0, 0)
+scale_amount_max = 3.0
 
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(309, 179)
-scale = Vector2(12, 2.96)
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_rf2cd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("RectangleShape2D_uxrcv")
-
-[node name="ColorRect" type="ColorRect" parent="Floor"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
-color = Color(0.389287, 0.389287, 0.389287, 1)
-
-[node name="Floor9" type="StaticBody2D" parent="."]
-position = Vector2(1813, -355)
-scale = Vector2(12, 2.96)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor9"]
-shape = SubResource("RectangleShape2D_uxrcv")
-
-[node name="ColorRect" type="ColorRect" parent="Floor9"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
-color = Color(0.389287, 0.389287, 0.389287, 1)
-
-[node name="Floor6" type="StaticBody2D" parent="."]
-position = Vector2(1031, -76)
-scale = Vector2(12, 2.96)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor6"]
-shape = SubResource("RectangleShape2D_uxrcv")
-
-[node name="ColorRect" type="ColorRect" parent="Floor6"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
-color = Color(0.389287, 0.389287, 0.389287, 1)
-
-[node name="Floor2" type="StaticBody2D" parent="."]
-position = Vector2(527, 98)
-scale = Vector2(1.5, 1.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
-shape = SubResource("RectangleShape2D_uxrcv")
-
-[node name="ColorRect" type="ColorRect" parent="Floor2"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
-color = Color(0.389287, 0.389287, 0.389287, 1)
-
-[node name="Floor7" type="StaticBody2D" parent="."]
-position = Vector2(1430, -263)
-scale = Vector2(1.5, 1.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor7"]
-shape = SubResource("RectangleShape2D_uxrcv")
-
-[node name="ColorRect" type="ColorRect" parent="Floor7"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
-color = Color(0.389287, 0.389287, 0.389287, 1)
-
-[node name="Floor8" type="StaticBody2D" parent="."]
-position = Vector2(1569, -312)
-scale = Vector2(1.5, 1.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor8"]
-shape = SubResource("RectangleShape2D_uxrcv")
-
-[node name="ColorRect" type="ColorRect" parent="Floor8"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
-color = Color(0.389287, 0.389287, 0.389287, 1)
-
-[node name="Floor4" type="StaticBody2D" parent="."]
-position = Vector2(713, -6)
-scale = Vector2(1.5, 1.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor4"]
-shape = SubResource("RectangleShape2D_uxrcv")
-
-[node name="ColorRect" type="ColorRect" parent="Floor4"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
-color = Color(0.389287, 0.389287, 0.389287, 1)
-
-[node name="Floor5" type="StaticBody2D" parent="."]
-position = Vector2(799, -58)
-scale = Vector2(1.5, 1.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor5"]
-shape = SubResource("RectangleShape2D_uxrcv")
-
-[node name="ColorRect" type="ColorRect" parent="Floor5"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
-color = Color(0.389287, 0.389287, 0.389287, 1)
-
-[node name="Floor3" type="StaticBody2D" parent="."]
-position = Vector2(619, 48)
-scale = Vector2(1.5, 1.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3"]
-shape = SubResource("RectangleShape2D_uxrcv")
-
-[node name="ColorRect" type="ColorRect" parent="Floor3"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
-color = Color(0.389287, 0.389287, 0.389287, 1)
-
-[node name="Bounce" type="StaticBody2D" parent="." groups=["Bouncy"]]
-position = Vector2(1302, -56)
-scale = Vector2(1.22579, -1.21472)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounce"]
-shape = SubResource("RectangleShape2D_uxrcv")
-
-[node name="ColorRect" type="ColorRect" parent="Bounce"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 30.0
-offset_bottom = 30.0
-scale = Vector2(0.499, 0.5)
-color = Color(0.0682298, 0, 0.87264, 1)
+[node name="Jump Audio" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("3_a814b")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 2026.0
-offset_top = -483.0
-offset_right = 2226.0
-offset_bottom = -403.0
+offset_left = 1521.0
+offset_top = -331.0
+offset_right = 1721.0
+offset_bottom = -251.0
 text = "All for Now :)"
+
+[node name="Platforms" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAACAAEAAQABAAAAAAABAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAADAAIAAQABAAIAAAACAAIAAQABAAIAAAABAAIAAQABAAIAAAAEAAIAAQABAAIAAAAFAAEAAQACAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAIAAAAFAAIAAQACAAIAAAAKAP7/AQAAAAAAAAAKAP//AQAAAAIAAAALAP//AQACAAIAAAALAP7/AQACAAAAAAAQAPz/AQAAAAIAAAAQAPv/AQAAAAAAAAARAPv/AQACAAAAAAARAPz/AQACAAIAAAAWAPj/AQAAAAAAAAAWAPn/AQAAAAIAAAAXAPn/AQACAAIAAAAXAPj/AQACAAAAAAAcAPX/AQAAAAAAAAAcAPb/AQAAAAEAAAAcAPf/AQAAAAEAAAAdAPf/AQABAAEAAAAeAPf/AQABAAEAAAAfAPf/AQABAAEAAAAgAPj/AQABAAIAAAAhAPj/AQACAAIAAAAhAPf/AQACAAEAAAAcAPj/AQAAAAIAAAAdAPj/AQABAAIAAAAeAPj/AQABAAIAAAAgAPf/AQABAAEAAAAhAPb/AQACAAEAAAAgAPb/AQABAAEAAAAfAPj/AQABAAIAAAAdAPb/AQABAAEAAAAeAPb/AQABAAEAAAAfAPb/AQABAAEAAAAgAPX/AQABAAAAAAAhAPX/AQACAAAAAAAfAPX/AQABAAAAAAAeAPX/AQABAAAAAAAdAPX/AQABAAAAAAA=")
+tile_set = SubResource("TileSet_rpqi1")
+
+[node name="Bouncy" type="TileMapLayer" parent="." groups=["Bouncy"]]
+tile_map_data = PackedByteArray("AAA5APT/AgAAAAAAAAA6APT/AgACAAAAAAA6APX/AgACAAIAAAA5APX/AgAAAAIAAAA=")
+tile_set = SubResource("TileSet_rpqi1")
